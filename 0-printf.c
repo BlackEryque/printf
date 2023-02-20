@@ -14,7 +14,7 @@ int _printf(const char *format, ...)
 	char *n;
 
 	va_list extras;
-	
+
 	count = 0;
 	va_start(extras, format);
 	if (*format == '\0')
@@ -25,7 +25,6 @@ int _printf(const char *format, ...)
 		{
 			_putchar(*format);
 			format++;
-			count++;
 		}
 		else
 		{
@@ -34,20 +33,19 @@ int _printf(const char *format, ...)
 			{
 				k = va_arg(extras, int);
 				_putchar(k);
-				count++;
 			}
 			if (*format == 's')
 			{
 				n = va_arg(extras, char *);
 				_str(n);
-				count++;
 			}
 			if (*format == '%')
 			{
 				_putchar(*format);
-				count++;
 			}
 			format++;
+		}
+		count++;
 	}
 	va_end(extras);
 	return (count);
